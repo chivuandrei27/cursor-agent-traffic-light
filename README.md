@@ -1,5 +1,8 @@
 # Cursor Agent Traffic Light
 
+<img width="380" height="409" alt="image" src="https://github.com/user-attachments/assets/ff8abe2d-2f8b-4d0f-a267-4d5d7f3f4931" />
+
+
 Local traffic-light indicator for the Cursor AI agent.
 
 ```
