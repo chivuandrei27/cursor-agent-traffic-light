@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cursor-agent-traffic-light": {
+      "command": "/Users/andrei/.local/node-versions/node-v24.18.0-darwin-arm64/bin/node",
+      "args": ["/Users/andrei/Documents/Trafic Ligths/cursor-agent-traffic-light/mcp/server.mjs"]
+    }
+  }
+}

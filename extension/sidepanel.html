@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cursor Agent Traffic Light</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body class="sidepanel">
+    <main class="board">
+      <header class="board-header">
+        <div>
+          <h1 data-i18n="appTitle">Cursor Agent</h1>
+          <p class="board-sub" data-i18n="boardSub">Per-project traffic lights</p>
+        </div>
+        <p id="connection" class="connection disconnected" role="status">Disconnected</p>
+      </header>
+
+      <ul id="instances-list" class="project-list" aria-live="polite"></ul>
+      <p id="instances-empty" class="instances-empty" data-i18n="emptyProjects">
+        No projects detected yet. Send a prompt from each Cursor window.
+      </p>
+
+      <div class="actions actions-two">
+        <button type="button" id="btn-reconnect" data-i18n="reconnect">Reconnect</button>
+        <button type="button" id="btn-settings" data-i18n="settings">Settings</button>
+      </div>
+    </main>
+    <script src="panel.js" type="module"></script>
+  </body>
+</html>

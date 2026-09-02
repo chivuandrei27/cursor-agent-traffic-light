@@ -1,0 +1,35 @@
+---
+description: Traffic-light status meanings and when to report status via hooks or MCP
+globs:
+alwaysApply: true
+---
+
+# Cursor Agent Traffic Light
+
+Status colors:
+
+- Yellow / `working` — the agent is actively implementing or investigating.
+- Orange / `waiting` — the agent needs user input, approval, or an external answer.
+- Green / `completed` — the requested unit of work is finished. This does **not** by itself mean lint, tests, or build passed.
+- Red / `error` — an unresolved failure is blocking progress.
+- Grey / `offline` — the local bridge or extension is disconnected.
+- Slate / `idle` — ready, no active agent work.
+
+## Sources of truth
+
+1. Cursor Desktop hooks are the automatic fallback. They fire on prompt/tool lifecycle events.
+2. The optional MCP tool `report_cursor_status` is the explicit signal when you need `waiting`, verified `completed`, or a precise message.
+3. Do not spam manual `npm run status:*` commands. Use them only for local debugging.
+
+## MCP reporting (when the tool is available)
+
+- Call `report_cursor_status` with `working` when beginning substantial implementation.
+- Call `waiting` immediately before asking the user for information.
+- Call `error` when blocked by an unresolved technical error.
+- Call `completed` only after finishing the requested task.
+- Include validation fields (`lint`, `tests`, `build`) as `passed`, `failed`, or `not-run`.
+- Do not call the tool for every small file edit.
+
+## Honesty
+
+Do not claim validation unless lint, tests, or build actually ran. Hooks that mark `completed` after a turn ends are lifecycle signals, not proof that checks passed.

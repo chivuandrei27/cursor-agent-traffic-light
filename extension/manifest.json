@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Cursor Agent Traffic Light",
+  "description": "Shows the current Cursor AI agent status as a traffic-light indicator.",
+  "version": "0.1.2",
+  "minimum_chrome_version": "116",
+  "action": {
+    "default_title": "Open Cursor Agent Traffic Light",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "service-worker.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage", "notifications", "alarms", "sidePanel"],
+  "host_permissions": ["http://127.0.0.1/*", "http://localhost/*"]
+}

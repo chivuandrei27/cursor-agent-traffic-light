@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "description": "Example only. Prefer: npm run install:hooks -- --project-only",
+  "hooks": {
+    "sessionStart": [{ "command": "node /ABS/PATH/scripts/cursor-hook.mjs sessionStart idle" }],
+    "beforeSubmitPrompt": [
+      { "command": "node /ABS/PATH/scripts/cursor-hook.mjs beforeSubmitPrompt working" }
+    ],
+    "afterAgentThought": [
+      { "command": "node /ABS/PATH/scripts/cursor-hook.mjs afterAgentThought working" }
+    ],
+    "preToolUse": [{ "command": "node /ABS/PATH/scripts/cursor-hook.mjs preToolUse working" }],
+    "postToolUse": [{ "command": "node /ABS/PATH/scripts/cursor-hook.mjs postToolUse working" }],
+    "postToolUseFailure": [
+      { "command": "node /ABS/PATH/scripts/cursor-hook.mjs postToolUseFailure error" }
+    ],
+    "afterAgentResponse": [
+      { "command": "node /ABS/PATH/scripts/cursor-hook.mjs afterAgentResponse completed" }
+    ],
+    "stop": [{ "command": "node /ABS/PATH/scripts/cursor-hook.mjs stop completed" }],
+    "sessionEnd": [{ "command": "node /ABS/PATH/scripts/cursor-hook.mjs sessionEnd idle" }]
+  }
+}

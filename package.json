@@ -1,0 +1,68 @@
+{
+  "name": "cursor-agent-traffic-light",
+  "version": "0.1.0",
+  "description": "Local bridge and Chrome extension that show Cursor AI agent status as a traffic light",
+  "type": "module",
+  "bin": {
+    "cursor-agent-traffic-light": "bin/cursor-agent-traffic-light.mjs"
+  },
+  "files": [
+    "bin",
+    "bridge",
+    "extension",
+    "mcp",
+    "scripts",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node --watch-path=bridge --watch-path=scripts bridge/server.mjs",
+    "start": "node bridge/server.mjs",
+    "setup": "node scripts/setup.mjs",
+    "uninstall": "node scripts/uninstall.mjs",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test tests/**/*.test.mjs",
+    "test:acceptance": "node scripts/acceptance-test.mjs",
+    "test:extension": "node scripts/validate-extension.mjs",
+    "test:mcp": "node --test tests/mcp-status-client.test.mjs",
+    "test:all": "npm run lint && npm run format:check && npm test && npm run test:extension && npm run test:acceptance",
+    "status:idle": "node scripts/send-status.mjs idle",
+    "status:working": "node scripts/send-status.mjs working",
+    "status:waiting": "node scripts/send-status.mjs waiting",
+    "status:completed": "node scripts/send-status.mjs completed",
+    "status:error": "node scripts/send-status.mjs error",
+    "install:hooks": "node scripts/install-hooks.mjs",
+    "uninstall:hooks": "node scripts/uninstall-hooks.mjs",
+    "mcp": "node mcp/server.mjs",
+    "install:mcp": "node scripts/install-mcp.mjs",
+    "uninstall:mcp": "node scripts/uninstall-mcp.mjs",
+    "install:autostart": "node scripts/install-autostart.mjs",
+    "uninstall:autostart": "node scripts/uninstall-autostart.mjs",
+    "status:autostart": "node scripts/autostart-status.mjs"
+  },
+  "keywords": [
+    "cursor",
+    "chrome-extension",
+    "traffic-light",
+    "agent",
+    "hooks"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "ws": "^8.18.3",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "prettier": "^3.6.2"
+  }
+}

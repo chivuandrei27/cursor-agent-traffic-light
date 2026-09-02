@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cursor Agent Traffic Light — Debug</title>
+    <link rel="stylesheet" href="/debug.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Local bridge</p>
+          <h1>Cursor Agent Traffic Light</h1>
+        </div>
+        <div id="connection-badge" class="connection disconnected" role="status" aria-live="polite">
+          Disconnected
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel status-panel" aria-labelledby="current-heading">
+          <h2 id="current-heading">Current status</h2>
+          <div class="status-display">
+            <div id="status-circle" class="status-circle state-idle" aria-hidden="true"></div>
+            <div class="status-copy">
+              <p id="status-state" class="state-name">idle</p>
+              <p id="status-message" class="status-message" aria-live="polite">Bridge ready</p>
+            </div>
+          </div>
+
+          <dl class="meta-grid">
+            <div>
+              <dt>Project</dt>
+              <dd id="meta-project">—</dd>
+            </div>
+            <div>
+              <dt>Task</dt>
+              <dd id="meta-task">—</dd>
+            </div>
+            <div>
+              <dt>Source</dt>
+              <dd id="meta-source">—</dd>
+            </div>
+            <div>
+              <dt>Event</dt>
+              <dd id="meta-event">—</dd>
+            </div>
+            <div>
+              <dt>Sequence</dt>
+              <dd id="meta-sequence">—</dd>
+            </div>
+            <div>
+              <dt>Updated</dt>
+              <dd id="meta-updated">—</dd>
+            </div>
+            <div>
+              <dt>WS clients</dt>
+              <dd id="meta-clients">—</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel controls-panel" aria-labelledby="controls-heading">
+          <h2 id="controls-heading">Controls</h2>
+          <form id="status-form" class="fields">
+            <label>
+              Message
+              <input id="field-message" name="message" type="text" maxlength="500" />
+            </label>
+            <label>
+              Project
+              <input id="field-project" name="project" type="text" maxlength="200" />
+            </label>
+            <label>
+              Task
+              <input id="field-task" name="task" type="text" maxlength="300" />
+            </label>
+          </form>
+
+          <div class="button-row" role="group" aria-label="Set status">
+            <button type="button" data-state="idle" class="btn state-idle">Set Idle</button>
+            <button type="button" data-state="working" class="btn state-working">
+              Set Working
+            </button>
+            <button type="button" data-state="waiting" class="btn state-waiting">
+              Set Waiting
+            </button>
+            <button type="button" data-state="completed" class="btn state-completed">
+              Set Completed
+            </button>
+            <button type="button" data-state="error" class="btn state-error">Set Error</button>
+            <button type="button" id="btn-reset" class="btn btn-reset">Reset</button>
+          </div>
+        </section>
+
+        <section class="panel instances-panel" aria-labelledby="instances-heading">
+          <h2 id="instances-heading">Cursor projects</h2>
+          <p id="instances-summary" class="instances-summary">0 detected</p>
+          <ul id="instances-list" class="instances-list"></ul>
+        </section>
+
+        <section class="panel history-panel" aria-labelledby="history-heading">
+          <h2 id="history-heading">Status history</h2>
+          <ol id="history-list" class="history-list"></ol>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <script src="/debug.js" type="module"></script>
+  </body>
+</html>

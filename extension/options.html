@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Traffic Light Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <h1 data-i18n="optionsTitle">Traffic Light Settings</h1>
+      <p class="lede" data-i18n="optionsLede">
+        Configure language, theme, bridge connection, and support.
+      </p>
+
+      <form id="settings-form">
+        <fieldset>
+          <legend data-i18n="languageLegend">Language</legend>
+          <label>
+            <span data-i18n="languageLabel">Interface language</span>
+            <select id="language">
+              <option value="en">English</option>
+              <option value="ro">Română</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend data-i18n="themeLegend">Theme</legend>
+          <label>
+            <span data-i18n="themeLabel">Appearance</span>
+            <select id="theme">
+              <option value="dark" data-i18n="themeDark">Dark</option>
+              <option value="light" data-i18n="themeLight">Light</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend data-i18n="bridgeLegend">Bridge</legend>
+          <label>
+            <span data-i18n="bridgeHttpUrl">Bridge HTTP URL</span>
+            <input id="bridgeHttpUrl" type="url" required />
+          </label>
+          <label>
+            <span data-i18n="bridgeWsUrl">Bridge WebSocket URL</span>
+            <input id="bridgeWsUrl" type="url" required />
+          </label>
+          <label class="check">
+            <input id="reconnectAutomatically" type="checkbox" />
+            <span data-i18n="reconnectAutomatically">Reconnect automatically</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="support">
+          <legend data-i18n="supportLegend">Support</legend>
+          <p class="support-body" data-i18n="supportBody">
+            This extension shows Cursor agent status from a local bridge on your computer.
+          </p>
+          <p class="support-tips-title" data-i18n="supportTipsTitle">Quick tips</p>
+          <ul class="support-tips">
+            <li data-i18n="supportTip1">Load the unpacked extension from the extension folder.</li>
+            <li data-i18n="supportTip2">Start the local bridge before using Cursor.</li>
+            <li data-i18n="supportTip3">
+              Pin the side panel to keep traffic lights visible while browsing.
+            </li>
+          </ul>
+        </fieldset>
+
+        <div class="actions">
+          <button type="submit" id="btn-save" data-i18n="save">Save</button>
+          <button type="button" id="btn-defaults" data-i18n="restoreDefaults">
+            Restore defaults
+          </button>
+          <button type="button" id="btn-test" data-i18n="testConnection">Test connection</button>
+        </div>
+      </form>
+
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+    <script src="options.js" type="module"></script>
+  </body>
+</html>
